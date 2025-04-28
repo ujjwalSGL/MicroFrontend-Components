@@ -1,1 +1,1 @@
-declare module "remote_app/Button";
+declare module "admin_ui/Button";

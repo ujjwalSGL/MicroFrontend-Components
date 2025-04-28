@@ -1,5 +1,5 @@
 import { lazy } from "react";
-const RemoteButton = lazy(() => import("remote_app/Button"));
+const RemoteButton = lazy(() => import("admin_ui/Button"));
 
 const App = () => {
   return (

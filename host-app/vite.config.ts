@@ -9,22 +9,24 @@ export default defineConfig({
     react(),
     federation({
       name: "host_app",
+      filename: "hostApp.js",
       remotes: {
-        remote_app: "http://localhost:5001/assets/remoteEntry.js",
+        admin_ui: "https://admin-ui-ebon-six.vercel.app/assets/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
     }),
     tailwindcss(),
   ],
+  server: {
+    cors: false,
+  },
   build: {
-    modulePreload: false,
     target: "esnext",
     minify: false,
     cssCodeSplit: false,
   },
-  server: {
-    port: 5000,
-    strictPort: true,
+  preview: {
+    port: 3003,
   },
   resolve: {
     alias: {
