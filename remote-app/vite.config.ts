@@ -1,7 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import federation from "@originjs/vite-plugin-federation";
-
+import path from "path";
+import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [
     react(),
@@ -9,10 +10,11 @@ export default defineConfig({
       name: "remote_app",
       filename: "remoteEntry.js",
       exposes: {
-        "./Button": "./src/components/Button.tsx",
+        "./Button": "./src/components/elements/Button.tsx",
       },
       shared: ["react", "react-dom"],
     }),
+    tailwindcss(),
   ],
   build: {
     modulePreload: false,
@@ -29,5 +31,10 @@ export default defineConfig({
     port: 5001,
     strictPort: true,
     cors: true,
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
 });
